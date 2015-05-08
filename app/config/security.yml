@@ -1,0 +1,31 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        Teller\UserBundel\Entity\User: bcrypt
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER]
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, user_db]
+        in_memory:
+            memory:
+                users:
+                    admin: { password: adminpass, roles: ROLE_ADMIN}
+        user_db:
+            entity: { class: TellerUserBundle:User, property: username }
+    firewalls:
+        main:
+            pattern: /.*
+            form_login:
+                login_path: /login
+                check_path: /login_check
+                default_target_path: /dashboard
+            logout:
+                path: /logout
+                target: /
+            security: true
+            anonymous: true
+    access_control:
+        - { path: /login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /user, roles: ROLE_ADMIN }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="{{ asset('css/bootstrap.css') }}" type="text/css" rel="stylesheet"/>
+        <link href="{{ asset('css/bootstrap-responsive.css') }}" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/keen-dashboards.css') }}" />
+        <link href="{{ asset('css/font-awesome.min.css.css') }}" rel="stylesheet" type="text/css">
+
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link href="{{ asset('css/custom.css') }}" type="text/css" rel="stylesheet"/>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            {% if error is defined %}
+                <div class="alert alert-error">{{ error.messageKey|trans(error.messageData) }}</div>
+            {% endif %}
+
+            {% block body %}
+
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/lib/holderjs/holder.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lib/keen-js/dist/keen.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/meta.js') }}"></script>
+
+{% endblock %}
+</body>
+</html>

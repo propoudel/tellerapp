@@ -1,0 +1,11 @@
+teller_account:
+    resource: "@TellerAccountBundle/Resources/config/routing.yml"
+    prefix:   /
+
+teller_user:
+    resource: "@TellerUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

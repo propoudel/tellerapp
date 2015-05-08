@@ -1,0 +1,15 @@
+teller_user_user:
+    resource: "@TellerUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+teller_user_homepage:
+    path: /
+    defaults: { _controller: TellerUserBundle:Default:index }
+login:
+    path: /login
+    defaults: { _controller: TellerUserBundle:Security:login }
+login_check:
+    path: /login_check
+    defaults: { _controller: TellerUserBundle:Security:login }
+logout:
+    path: /logout

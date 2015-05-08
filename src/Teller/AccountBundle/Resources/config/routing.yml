@@ -1,0 +1,3 @@
+teller_account_homepage:
+    path:     /dashboard
+    defaults: { _controller: TellerAccountBundle:Default:index }
