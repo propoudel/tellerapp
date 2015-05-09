@@ -47,5 +47,6 @@ class DefaultController extends Controller
 
     public function currencyAction(){
         return $this->render('TellerAccountBundle:Default:currency.html.twig');
+        //this is comment
     }
 }
