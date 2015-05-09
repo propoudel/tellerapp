@@ -7,3 +7,6 @@ teller_account_add:
 report:
     path: /dashboard/report
     defaults: { _controller: TellerAccountBundle:Default:report }
+currency:
+    path: /dashboard/currency
+    defaults: { _controller: TellerAccountBundle:Default:currency }

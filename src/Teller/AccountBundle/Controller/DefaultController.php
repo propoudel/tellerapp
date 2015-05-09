@@ -45,4 +45,8 @@ class DefaultController extends Controller
     public function reportAction(){
         return $this->render('TellerAccountBundle:Default:report.html.twig');
     }
+
+    public function currencyAction(){
+        return $this->render('TellerAccountBundle:Default:report.html.twig');
+    }
 }
