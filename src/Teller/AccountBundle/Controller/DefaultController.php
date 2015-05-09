@@ -8,17 +8,11 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class DefaultController extends Controller
 {
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function indexAction()
     {
         return $this->render('TellerAccountBundle:Default:index.html.twig');
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function addAction()
     {
         try {
@@ -53,6 +47,5 @@ class DefaultController extends Controller
 
     public function currencyAction(){
         return $this->render('TellerAccountBundle:Default:currency.html.twig');
-        //this is comment
     }
 }
