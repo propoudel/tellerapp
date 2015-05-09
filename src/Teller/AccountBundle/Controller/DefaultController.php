@@ -39,4 +39,8 @@ class DefaultController extends Controller
         die;
         //return $this->render('TellerAccountBundle:Default:index.html.twig');
     }
+
+    public function reportAction(){
+        return $this->render('TellerAccountBundle:Default:report.html.twig');
+    }
 }
