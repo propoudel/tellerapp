@@ -5,7 +5,6 @@ namespace Teller\AccountBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Teller\AccountBundle\Entity\Account;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class DefaultController extends Controller
 {
