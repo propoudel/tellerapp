@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Teller\AccountBundle\Entity\Account" table="account">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="userId" type="integer" column="user_id" nullable="true"/>
+    <field name="receivedMoney" type="integer" column="received_money" nullable="true"/>
+    <field name="receivedCurrency" type="integer" column="received_currency" nullable="true"/>
+    <field name="sentCurrency" type="string" column="sent_currency" length="100" nullable="true"/>
+    <field name="sentRate" type="string" column="sent_rate" length="100" nullable="true"/>
+    <field name="totalTransferredMoney" type="integer" column="total_transferred_money" nullable="true"/>
+  </entity>
+</doctrine-mapping>

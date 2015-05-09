@@ -1,3 +1,6 @@
 teller_account_homepage:
     path:     /dashboard
     defaults: { _controller: TellerAccountBundle:Default:index }
+teller_account_add:
+    path: /add
+    defaults: { _controller: TellerAccountBundle:Default:add }
