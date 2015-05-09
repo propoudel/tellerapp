@@ -12,8 +12,8 @@
                         <div class="col-sm-12">
                             {% for flashMessage in app.session.flashbag.get('notice') %}
                                 {% if flashMessage is defined  %}
-                                    <div class="form-group">
-                                        <label>{{ flashMessage }}</label>
+                                    <div class="alert alert-info">
+                                       {{ flashMessage }}
                                     </div>
                                 {% endif %}
                             {% endfor %}

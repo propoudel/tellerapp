@@ -32,17 +32,11 @@ class DefaultController extends Controller
             $em->flush();
 
             $this->get('session')->getFlashBag()->add('notice', 'Money Has been Transferred Successfully!!');
+            return $this->redirectToRoute('teller_account_homepage');
 
-            return $this->redirectToRoute('/dashboard');
-
-            //redirect('dashboard');
-
-            //return $this->redirectToRoute('dashboard');
-            //return new RedirectResponse($this->generateUrl('dashboard'));
-            //return $this->redirectToRoute('dashboard');
         } catch(Exception $e) {
             $this->get('session')->getFlashBag()->add('notice', 'Money Has Not Been Transferred!!');
-            return $this->redirectToRoute('/dashboard');
+            return $this->redirectToRoute('teller_account_homepage');
 
             //return new RedirectResponse($this->generateUrl('dashboard'));
         }
