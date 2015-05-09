@@ -8,7 +8,7 @@
         <link href="{{ asset('css/bootstrap-responsive.css') }}" type="text/css" rel="stylesheet"/>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/keen-dashboards.css') }}"/>
         <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
+        <link href="{{ asset('css/datepicker.css') }}" type="text/css" rel="stylesheet"/>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,110 +54,25 @@
         <div class="col-sm-12">
             <div class="row">
                 <div class="col-sm-3">
-                    <!-- left -->
-                    <h3><i class="fa fa-bars"></i> Teller Menu</h3>
-                    <hr>
 
-                    <ul class="nav nav-stacked">
-                        <li><a href="javascript:;"><i class="glyphicon glyphicon-link"></i> Teller</a></li>
-                        <li><a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
-                        <li><a href="javascript:;"><i class="fa fa-cog"></i> Currency Setting</a></li>
-                    </ul>
 
-                    <hr>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h4><i class="glyphicon glyphicon-th-list"></i> Teller Menu</h4></div>
+                        <div class="panel-body">
+                            <ul class="nav nav-stacked">
+                                <li><a href="{{ app.request.getBaseURL() }}/dashboard"><i class="fa fa-plus-square"></i> Teller</a></li>
+                                <li><a href="{{ app.request.getBaseURL() }}/dashboard/report"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
+                                <li><a href="{{ app.request.getBaseURL() }}/dashboard/setting"><i class="fa fa-cog"></i> Currency Setting</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="col-sm-9">
                     {% if error is defined %}
                         <div class="alert alert-error">{{ error.messageKey|trans(error.messageData) }}</div>
                     {% endif %}
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading"><h4>Transaction</h4></div>
-                        <div class="panel-body">
-                            <div class="col-sm-12">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Received</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="amount">Total Amount</label>
-                                                <input type="text" class="form-control" id="amount"
-                                                       placeholder="Amount">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="currency">Currency</label>
-                                                <input type="text" class="form-control" id="currency"
-                                                       placeholder="Currency">
-                                            </div>
-                                        </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Send</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="sendcurrency">Currency</label>
-                                                    <input type="text" class="form-control" id="sendcurrency"
-                                                           placeholder="Currency">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="rate">Rate</label>
-                                                    <input type="email" class="form-control" id="rate"
-                                                           placeholder="Rate">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="totalamount">Total Amount To Send</label>
-                                                    <input type="text" class="form-control" id="totalamount"
-                                                           placeholder="Total Amount">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="detail">Detail</label>
-                                                    <textarea name="details" id="detail" class="form-control"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <button class="btn btn-primary pull-right">Send Amount</button>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                            </div>
-
-                        </div>
-                    </div>
                     {% block body %}
 
                     {% endblock %}
@@ -178,28 +93,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {% block javascripts %}
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
@@ -207,6 +100,10 @@
     <script type="text/javascript" src="{{ asset('js/lib/holderjs/holder.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/lib/keen-js/dist/keen.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/meta.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    <script>
+        $('.datepicker').datepicker()
+    </script>
 
 {% endblock %}
 </body>
