@@ -6,19 +6,28 @@
         <div class="panel-heading"><h4>Transaction</h4></div>
         <div class="panel-body">
             <div class="col-sm-12">
-                <form>
+                <form action="{{ app.request.getBaseURL() }}/dashboard/add" method="POST" name="addTransfer">
                     <div class="row">
+
                         <div class="col-sm-12">
+                            {% for flashMessage in app.session.flashbag.get('notice') %}
+                                {% if flashMessage is defined  %}
+                                    <div class="form-group">
+                                        <label>{{ flashMessage }}</label>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                             <div class="form-group">
                                 <label>Received</label>
                             </div>
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="amount">Total Amount</label>
-                                <input type="text" class="form-control" id="amount"
+                                <input required="required" name="amount" type="number" class="form-control" id="amount"
                                        placeholder="Amount">
                             </div>
                         </div>
@@ -26,7 +35,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="currency">Currency</label>
-                                <input type="text" class="form-control" id="currency"
+                                <input required="required" type="text" name="currency" class="form-control" id="currency"
                                        placeholder="Currency">
                             </div>
                         </div>
@@ -43,8 +52,8 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="sendcurrency">Currency</label>
-                                <input type="text" class="form-control" id="sendcurrency"
+                                <label for="send_currency">Currency</label>
+                                <input required="required" name="send_currency" type="text" class="form-control" id="send_currency"
                                        placeholder="Currency">
                             </div>
                         </div>
@@ -52,7 +61,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="rate">Rate</label>
-                                <input type="email" class="form-control" id="rate"
+                                <input required="required" name="rate" type="number" class="form-control" id="rate"
                                        placeholder="Rate">
                             </div>
                         </div>
@@ -62,7 +71,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="totalamount">Total Amount To Send</label>
-                                <input type="text" class="form-control" id="totalamount"
+                                <input required="required" name="totalamount" type="number" class="form-control" id="totalamount"
                                        placeholder="Total Amount">
                             </div>
                         </div>
@@ -72,7 +81,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="detail">Detail</label>
-                                <textarea name="details" id="detail" class="form-control"></textarea>
+                                <textarea required="required" name="details" id="detail" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>

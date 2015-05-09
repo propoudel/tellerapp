@@ -4,6 +4,8 @@ namespace Teller\AccountBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Teller\AccountBundle\Entity\Account;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class DefaultController extends Controller
 {
@@ -14,30 +16,36 @@ class DefaultController extends Controller
 
     public function addAction()
     {
-        $account = new Account();
+        try {
+            $account = new Account();
 
-        $account->setReceivedMoney(12345);
-        $account->setReceivedCurrency('Nrs');
-        $account->setSentCurrency('DHS');
-        $account->setSentRate(27.2);
-        $account->setUserId(1);
+            $account->setReceivedMoney($_POST['amount']);
+            $account->setReceivedCurrency($_POST['currency']);
+            $account->setSentCurrency($_POST['send_currency']);
+            $account->setSentRate($_POST['rate']);
+            $account->setUserId(1);
+            $total = $_POST['amount'] * $_POST['rate'];
+            $account->setTotalTransferredMoney($total);
 
-        $total = 1 * 27.2;
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($account);
+            $em->flush();
 
-        $account->setTotalTransferredMoney($total);
+            $this->get('session')->getFlashBag()->add('notice', 'Money Has been Transferred Successfully!!');
 
+            return $this->redirectToRoute('/dashboard');
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($account);
-        $em->flush();
+            //redirect('dashboard');
 
-//        return new Response(
-//            'Created Account id: '.$account->getId()
-//        );
+            //return $this->redirectToRoute('dashboard');
+            //return new RedirectResponse($this->generateUrl('dashboard'));
+            //return $this->redirectToRoute('dashboard');
+        } catch(Exception $e) {
+            $this->get('session')->getFlashBag()->add('notice', 'Money Has Not Been Transferred!!');
+            return $this->redirectToRoute('/dashboard');
 
-        echo 'here';
-        die;
-        //return $this->render('TellerAccountBundle:Default:index.html.twig');
+            //return new RedirectResponse($this->generateUrl('dashboard'));
+        }
     }
 
     public function reportAction(){
