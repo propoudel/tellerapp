@@ -6,49 +6,38 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Currencydetail
- *
- * @ORM\Table(name="currencydetail")
- * @ORM\Entity
  */
 class Currencydetail
 {
     /**
      * @var string
-     *
-     * @ORM\Column(name="country", type="string", length=100, nullable=true)
      */
     private $country;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="currency", type="string", length=100, nullable=true)
      */
     private $currency;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="shortform", type="string", length=10, nullable=true)
      */
-    private $shortform;
+    private $code;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="symbol", type="string", length=10, nullable=true)
      */
     private $symbol;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $status;
+
+    /**
+     * @var integer
      */
     private $id;
-
 
 
     /**
@@ -98,26 +87,26 @@ class Currencydetail
     }
 
     /**
-     * Set shortform
+     * Set code
      *
-     * @param string $shortform
+     * @param string $code
      * @return Currencydetail
      */
-    public function setShortform($shortform)
+    public function setCode($code)
     {
-        $this->shortform = $shortform;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get shortform
+     * Get code
      *
      * @return string 
      */
-    public function getShortform()
+    public function getCode()
     {
-        return $this->shortform;
+        return $this->code;
     }
 
     /**
@@ -141,6 +130,29 @@ class Currencydetail
     public function getSymbol()
     {
         return $this->symbol;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Currencydetail
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**

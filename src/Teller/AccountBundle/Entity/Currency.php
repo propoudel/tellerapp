@@ -6,35 +6,23 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Currency
- *
- * @ORM\Table(name="currency")
- * @ORM\Entity
  */
 class Currency
 {
     /**
      * @var string
-     *
-     * @ORM\Column(name="from_currency", type="string", length=55, nullable=true)
      */
     private $fromCurrency;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="to_currency", type="string", length=55, nullable=true)
      */
     private $toCurrency;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
 
 
     /**

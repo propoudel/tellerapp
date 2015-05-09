@@ -6,7 +6,8 @@
     </id>
     <field name="country" type="string" column="country" length="100" nullable="true"/>
     <field name="currency" type="string" column="currency" length="100" nullable="true"/>
-    <field name="shortform" type="string" column="shortform" length="10" nullable="true"/>
+    <field name="code" type="string" column="code" length="10" nullable="true"/>
     <field name="symbol" type="string" column="symbol" length="10" nullable="true"/>
+	<field name="status" type="integer" column="status" length="1" nullable="false"/>
   </entity>
 </doctrine-mapping>

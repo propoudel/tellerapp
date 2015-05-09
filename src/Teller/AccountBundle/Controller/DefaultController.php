@@ -4,6 +4,7 @@ namespace Teller\AccountBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Teller\AccountBundle\Entity\Account;
+use Teller\AccountBundle\Entity\Currencydetail;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class DefaultController extends Controller
@@ -45,7 +46,17 @@ class DefaultController extends Controller
         return $this->render('TellerAccountBundle:Default:report.html.twig');
     }
 
-    public function currencyAction(){
+    public function currencyAction() {
+        $repository = $this->getDoctrine()
+            ->getRepository('TellerAccountBundle:Currencydetail');
+
+        $query = $repository->createQueryBuilder('p')
+            ->getQuery();
+
+        $currencies = $query->getResult();
+
+        print_r($currencies); die;
+
         return $this->render('TellerAccountBundle:Default:currency.html.twig');
     }
 }
