@@ -1,9 +1,0 @@
-teller_account_homepage:
-    path:     /dashboard
-    defaults: { _controller: TellerAccountBundle:Default:index }
-report:
-    path: /dashboard/report
-    defaults: { _controller: TellerAccountBundle:Default:report }
-teller_account_add:
-    path: /add
-    defaults: { _controller: TellerAccountBundle:Default:add }
