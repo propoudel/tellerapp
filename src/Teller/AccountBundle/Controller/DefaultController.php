@@ -45,7 +45,13 @@ class DefaultController extends Controller
     }
 
     public function reportAction(){
-        return $this->render('TellerAccountBundle:Default:report.html.twig');
+        $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT * FROM account AS a JOIN USER AS u ON u.id = a.user_id");
+        //$statement->bindValue('id', 123);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        return $this->render('TellerAccountBundle:Default:report.html.twig', array('data' => $results));
     }
 
     public function currencyAction() {

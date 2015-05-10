@@ -60,27 +60,22 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+
+                                    {% set i = 1 %}
+
+                                {% for list in data %}
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
+                                        <th scope="row">{{ i }}</th>
+                                        <td>{{ list.username }}</td>
+                                        <td>{{ list.received_money }}</td>
+                                        <td>{{ list.total_transferred_money }}</td>
+                                        <td>{{ list.comment }}</td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
-                                    </tr>
+
+                                    {% set i = i+1 %}
+
+                                {% endfor %}
+
                                     </tbody>
                                 </table>
                             </div>
