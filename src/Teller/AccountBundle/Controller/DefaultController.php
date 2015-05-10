@@ -63,9 +63,6 @@ class DefaultController extends Controller
         */
         // Executed Successfully
 
-        //echo implode($_POST['id'], ',');
-        //die;
-
         $repository = $this->getDoctrine()
             ->getRepository('TellerAccountBundle:Currencydetail');
 
