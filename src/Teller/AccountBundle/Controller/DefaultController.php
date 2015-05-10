@@ -59,12 +59,28 @@ class DefaultController extends Controller
         $statement->execute();
         $results = $statement->fetchAll();
 
-        print_r($results); die;
+        echo '<pre>'; print_r($results); die;
         */
         // Executed Successfully
 
+        //echo implode($_POST['id'], ',');
+        //die;
+
         $repository = $this->getDoctrine()
             ->getRepository('TellerAccountBundle:Currencydetail');
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $ids = '(' . implode($_POST['id'], ',') . ')';
+            $em = $this->getDoctrine()->getEntityManager();
+            $connection = $em->getConnection();
+
+            foreach($_POST['id'] as $id) {
+                    $statement_zero = $connection->prepare("UPDATE currencydetail SET STATUS=0");
+                    $statement_zero->execute();
+                    $statement_one = $connection->prepare("UPDATE currencydetail SET STATUS=1 WHERE id IN $ids");
+                    $statement_one->execute();
+            }
+        }
 
         $query = $repository->createQueryBuilder('p')
             ->getQuery();
@@ -74,9 +90,6 @@ class DefaultController extends Controller
         $data = array(
             'currencies' => $currencies
         );
-
-        print_r($currencies);
-        die;
 
         return $this->render('TellerAccountBundle:Default:currency.html.twig', $data);
     }

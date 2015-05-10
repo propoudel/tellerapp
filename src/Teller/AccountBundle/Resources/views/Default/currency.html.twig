@@ -6,34 +6,26 @@
         <div class="panel-heading"><h4>Report</h4></div>
         <div class="panel-body">
             <div class="col-sm-12">
-                <form>
+                <form action="{{ app.request.getBaseURL() }}/dashboard/currency" method="POST" name="currency">
 
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="country">Country</label>
-                                    <input id="country" class="form-control"  name="country" type="text" placeholder="Country">
+                                {% for currency in currencies %}
+                                    <div class="checkbox">
+                                        <label>
+                                            <input id="currency" name="id[]" value="{{ currency.getId() }}" {% if currency.getStatus() == 1 %} checked {% endif %} type="checkbox"> {{ currency.getCountry() }}
+                                        </label>
+                                    </div>
+                                    {#{{ currency.getId() }}#}
+                                    {#{{ currency.getCountry() }}#}
+                                    {#{{ currency.getCurrency() }}#}
+                                    {#{{ currency.getCode() }}#}
+                                    {#{{ currency.getSymbol() }}#}
+                                    {#{{ currency.getStatus() }}#}
+                                {% endfor %}
                             </div>
-                        </div>
-                    </div>
 
-
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="currency">Currency Code</label>
-                                <input name="currency" type="text" class="form-control" id="currency" placeholder="Currency">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="symbol">Symbol</label>
-                                <input name="symbol" type="text" class="form-control" id="symbol" placeholder="Symbol">
-                            </div>
                         </div>
                     </div>
 
