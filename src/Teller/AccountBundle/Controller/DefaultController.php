@@ -50,19 +50,18 @@ class DefaultController extends Controller
 
     public function currencyAction() {
 
+        // Custom Query Done
+        // Ref : http://stackoverflow.com/questions/12862389/symfony2-doctrine-create-custom-sql-query
+        /* $em = $this->getDoctrine()->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT * FROM account AS a JOIN USER AS u ON u.id = a.user_id");
+        //$statement->bindValue('id', 123);
+        $statement->execute();
+        $results = $statement->fetchAll();
 
-        $a = $this->getEntityManager()
-            ->createQueryBuilder()
-            ->select('r')
-            ->from('TellerAccountBundle:Account', 'r')
-            ->innerJoin('p.user','u')
-            ->getQuery()
-            ->getResult();
-
-        print_r($a); die;
-
-
-
+        print_r($results); die;
+        */
+        // Executed Successfully
 
         $repository = $this->getDoctrine()
             ->getRepository('TellerAccountBundle:Currencydetail');
