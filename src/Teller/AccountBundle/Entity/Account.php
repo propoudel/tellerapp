@@ -3,11 +3,12 @@
 namespace Teller\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * Account
  */
-class Account
+class Account extends EntityRepository
 {
     /**
      * @var integer
@@ -191,5 +192,15 @@ class Account
     public function getId()
     {
         return $this->id;
+    }
+
+    public function findAllOrderedByName()
+    {
+        die;
+        print_r($this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM TellerAccountBundle:Account p ORDER BY p.id ASC'
+            )
+            ->getResult()); die;
     }
 }
