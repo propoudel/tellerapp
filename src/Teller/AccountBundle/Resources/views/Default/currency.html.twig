@@ -9,24 +9,23 @@
                 <form action="{{ app.request.getBaseURL() }}/dashboard/currency" method="POST" name="currency">
 
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                {% for currency in currencies %}
-                                    <div class="checkbox">
-                                        <label>
-                                            <input id="currency" name="id[]" value="{{ currency.getId() }}" {% if currency.getStatus() == 1 %} checked {% endif %} type="checkbox"> {{ currency.getCountry() }}
-                                        </label>
-                                    </div>
-                                    {#{{ currency.getId() }}#}
-                                    {#{{ currency.getCountry() }}#}
-                                    {#{{ currency.getCurrency() }}#}
-                                    {#{{ currency.getCode() }}#}
-                                    {#{{ currency.getSymbol() }}#}
-                                    {#{{ currency.getStatus() }}#}
-                                {% endfor %}
+                        {% for currency in currencies %}
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input id="currency" name="id[]" value="{{ currency.getId() }}" {% if currency.getStatus() == 1 %} checked {% endif %} type="checkbox"> {{ currency.getCountry() }}
+                                            </label>
+                                        </div>
+                                        {#{{ currency.getId() }}#}
+                                        {#{{ currency.getCountry() }}#}
+                                        {#{{ currency.getCurrency() }}#}
+                                        {#{{ currency.getCode() }}#}
+                                        {#{{ currency.getSymbol() }}#}
+                                        {#{{ currency.getStatus() }}#}
+                                </div>
                             </div>
-
-                        </div>
+                        {% endfor %}
                     </div>
 
                     <div class="row">
