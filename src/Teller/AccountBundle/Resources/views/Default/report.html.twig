@@ -9,26 +9,22 @@
                 <form>
 
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="from">From</label>
-                                    <input class="form-control datepicker"  name="from" type="text" placeholder="From Date">
+                                <input class="form-control datepicker" name="from" type="text" placeholder="From Date">
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="to">To</label>
                                 <input type="text" class="form-control datepicker" id="to"
                                        placeholder="To Date">
                             </div>
                         </div>
-                    </div>
 
-
-
-                    <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-2">
                             <div class="form-group">
                                 <label for="sendcurrency">Currency</label>
                                 <input type="text" class="form-control" id="sendcurrency"
@@ -36,11 +32,20 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-2">
                             <div class="form-group">
                                 <label for="rate">Rate</label>
                                 <input type="email" class="form-control" id="rate"
                                        placeholder="Rate">
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label> &nbsp; </label>
+
+                                <button class=" form-control btn btn-primary">Search</button>
                             </div>
                         </div>
                     </div>
@@ -52,10 +57,10 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>SN</th>
+                                        <th>{{ knp_pagination_sortable(pagination, 'SN', 'a.id') }}</th>
                                         <th>Name</th>
-                                        <th>DR.</th>
-                                        <th>CR.</th>
+                                        <th>{{ knp_pagination_sortable(pagination, 'DR', 'a.receivedMoney') }}</th>
+                                        <th>{{ knp_pagination_sortable(pagination, 'CR', 'a.totalTransferredMoney') }}</th>
                                         <th>Details</th>
                                     </tr>
                                     </thead>
@@ -63,40 +68,27 @@
 
                                     {% set i = 1 %}
 
-                                {% for list in data %}
-                                    <tr>
-                                        <th scope="row">{{ i }}</th>
-                                        <td>{{ list.username }}</td>
-                                        <td>{{ list.received_money }}</td>
-                                        <td>{{ list.total_transferred_money }}</td>
-                                        <td>{{ list.comment }}</td>
-                                    </tr>
+                                    {% for list in pagination %}
+                                        <tr>
+                                            <th scope="row">{{ i }}</th>
+                                            <td>Admin</td>
+                                            <td>{{ list.receivedMoney }}</td>
+                                            <td>{{ list.totalTransferredMoney }}</td>
+                                            <td>Coming soon. orm</td>
+                                        </tr>
 
-                                    {% set i = i+1 %}
+                                        {% set i = i+1 %}
 
-                                {% endfor %}
+                                    {% endfor %}
 
                                     </tbody>
                                 </table>
                             </div>
                             <nav class="pull-right">
-                                <ul class="pagination">
-                                    <li>
-                                        <a href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
+
+                                {{ knp_pagination_render(pagination) }}
+
+
                             </nav>
                         </div>
                     </div>

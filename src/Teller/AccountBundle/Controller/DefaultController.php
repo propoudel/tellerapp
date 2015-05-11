@@ -3,6 +3,7 @@
 namespace Teller\AccountBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Teller\AccountBundle\Entity\Account;
 use Teller\AccountBundle\Entity\Currencydetail;
 use Doctrine\Entity;
@@ -44,14 +45,25 @@ class DefaultController extends Controller
         }
     }
 
-    public function reportAction(){
-        $em = $this->getDoctrine()->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT * FROM account AS a JOIN USER AS u ON u.id = a.user_id");
-        //$statement->bindValue('id', 123);
-        $statement->execute();
-        $results = $statement->fetchAll();
-        return $this->render('TellerAccountBundle:Default:report.html.twig', array('data' => $results));
+    public function reportAction(Request $request){
+
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT a FROM TellerAccountBundle:Account a ";
+
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        // parameters to template
+        return $this->render('TellerAccountBundle:Default:report.html.twig', array('pagination' => $pagination));
+
+
+
     }
 
     public function currencyAction() {
