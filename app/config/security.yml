@@ -12,6 +12,8 @@ security:
             memory:
                 users:
                     admin: { password: adminpass, roles: ROLE_ADMIN}
+                    prakash: { password: prakash, roles: ROLE_USER}
+                    sagar: { password: sagar, roles: ROLE_USER}
         user_db:
             entity: { class: TellerUserBundle:User, property: username }
     firewalls:
